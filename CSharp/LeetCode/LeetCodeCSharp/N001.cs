@@ -5,14 +5,7 @@ namespace Tests
 {
     public class N001
     {
-        [Test]
-        public void Test()
-        {
-            var result = TwoSum(new[] { 3, 3 }, 6);
-            Assert.AreEqual(result[0], 0);
-            Assert.AreEqual(result[1], 1);
-        }
-
+        [TestCase(new[] { 3, 3 }, 6, ExpectedResult = new[] { 0, 1 })]
         public int[] TwoSum(int[] nums, int target)
         {
             var numsDic = new Dictionary<int, List<KeyValuePair<int, int>>>(nums.Length);
