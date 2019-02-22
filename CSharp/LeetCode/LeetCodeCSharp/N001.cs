@@ -1,7 +1,7 @@
-using NUnit.Framework;
 using System.Collections.Generic;
+using NUnit.Framework;
 
-namespace Tests
+namespace LeetCodeCSharp
 {
     public class N001
     {
@@ -30,7 +30,7 @@ namespace Tests
                     else
                     {
                         if (numsDic[otherKey].Count != 1)
-                            return new int[] { numsDic[otherKey][0].Value, numsDic[otherKey][1].Value };
+                            return new[] { numsDic[otherKey][0].Value, numsDic[otherKey][1].Value };
                     }
                 }
             }
