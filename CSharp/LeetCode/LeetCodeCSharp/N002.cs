@@ -46,37 +46,27 @@ namespace LeetCodeCSharp
 
         public ListNode AddTwoNumbers(ListNode l1, ListNode l2)
         {
-            var list = new List<int>(l1.val + l2.val);
-            int deep = 1;
-            while (l1.next != null || l2.next != null)
+            ListNode dummyHead = new ListNode(0);
+            ListNode p = l1, q = l2, curr = dummyHead;
+            int carry = 0;
+            while (p != null || q != null)
             {
-                var l1V = 0;
-                if (l1.next != null)
-                {
-                    l1 = l1.next;
-                    l1V = l1.val;
-                }
-
-                var l2v = 0;
-                if (l2.next != null)
-                {
-                    l2 = l2.next;
-
-                    l2v = l2.val;
-                }
-                list.Add(l1V + l2v);
+                int x = p?.val ?? 0;
+                int y = q?.val ?? 0;
+                int sum = carry + x + y;
+                carry = sum / 10;
+                curr.next = new ListNode(sum % 10);
+                curr = curr.next;
+                p = p?.next;
+                q = q?.next;
             }
 
-            var resultCharArray = resultValue.ToString().ToCharArray();
-            ListNode result = new ListNode(resultCharArray[resultCharArray.Length - 1] - '0');
-            var currentNode = result;
-            for (int i = resultCharArray.Length - 2; i > -1; i--)
+            if (carry > 0)
             {
-                currentNode.next = new ListNode(resultCharArray[i] - '0');
-                currentNode = currentNode.next;
+                curr.next = new ListNode(carry);
             }
 
-            return result;
+            return dummyHead.next;
         }
     }
 }
