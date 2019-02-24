@@ -1,5 +1,4 @@
 import java.util.HashMap;
-import java.util.Map;
 
 public class N003 {
     public class Solution {
