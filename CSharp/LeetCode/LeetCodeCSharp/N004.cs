@@ -101,7 +101,5 @@ namespace LeetCodeCSharp
                 return nums[nums.Length / 2];
             }
         }
-
-
     }
 }

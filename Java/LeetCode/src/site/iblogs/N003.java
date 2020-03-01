@@ -3,7 +3,7 @@ package site.iblogs;
 import java.util.HashMap;
 
 public class N003 {
-        public int lengthOfLongestSubstring(String s) {
+        public int lengthOfLongestSubString(String s) {
             int ans = 0;
             int n = s.length();
             HashMap<Character, Integer> map = new HashMap<>(); // current index of character
