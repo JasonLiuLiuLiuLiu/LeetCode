@@ -1,4 +1,6 @@
-import Model.ListNode;
+package site.iblogs;
+
+import site.iblogs.model.ListNode;
 
 public class N002 {
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {

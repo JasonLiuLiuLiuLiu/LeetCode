@@ -1,3 +1,5 @@
+package site.iblogs;
+
 import java.util.HashMap;
 import java.util.Map;
 

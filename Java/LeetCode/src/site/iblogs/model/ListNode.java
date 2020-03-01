@@ -1,4 +1,4 @@
-package Model;
+package site.iblogs.model;
 
 public class ListNode
 {

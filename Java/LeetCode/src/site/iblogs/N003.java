@@ -1,7 +1,8 @@
+package site.iblogs;
+
 import java.util.HashMap;
 
 public class N003 {
-    public class Solution {
         public int lengthOfLongestSubstring(String s) {
             int ans = 0;
             int n = s.length();
@@ -16,5 +17,4 @@ public class N003 {
             }
             return ans;
         }
-    }
 }
