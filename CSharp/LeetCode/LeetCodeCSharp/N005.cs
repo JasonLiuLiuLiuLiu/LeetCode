@@ -8,99 +8,44 @@ namespace LeetCodeCSharp
 {
     class N005
     {
-        [TestCase("babad", ExpectedResult = "bab")]
+        //5. 最长回文子串
+        //  给定一个字符串 s，找到 s 中最长的回文子串。你可以假设 s 的最大长度为 1000。
+        [TestCase("bab", ExpectedResult = "bab")]
         public string LongestPalindrome(string s)
         {
-            var arrays = s.ToCharArray();
-            string result = "";
-            List<char> stack = new List<char>();
-            for (int i = 0; i < arrays.Length; i++)
+            if (string.IsNullOrEmpty(s))
             {
-                stack.Add(arrays[i]);
-                var checkResult = CheckPalindrome(stack);
-                if (checkResult != null && checkResult.Length > result.Length)
+                return "";
+            }
+
+            var store = new bool[s.Length, s.Length];
+
+            string result = "";
+
+            for (int len = 1; len <= s.Length; len++)
+            {
+                for (int i = 0; i < s.Length; i++)
                 {
-                    result = checkResult;
+                    var j = i + len - 1; 
+
+                    if (j >= s.Length)
+                    {
+                        break;
+                    }
+
+                    if (i == j || i + 1 == j||(s[i] == s[j]&&store[i+1,j-1]))
+                    {
+                        store[i, j] = true;
+                    }
+
+                    if (store[i, j] && len > result.Length)
+                    {
+                        result = s.Substring(i, len);
+                    }
                 }
             }
+
             return result;
-        }
-
-        private string CheckPalindrome(List<char> stack)
-        {
-            List<char> result = new List<char>();
-            int length = stack.Count;
-            if (stack.Count > 1)
-                for (int i = stack.Count - 1; i > -1; i--)
-                {
-                    var currentLength = length - i;
-                    bool isPalindrome = false;
-                    bool isDouble = false;
-                    if (i - currentLength + 1 > 0)
-                    {
-
-                        for (int j = 0; j < currentLength; j++)
-                        {
-                            if (j == currentLength - 1)
-                            {
-                                isPalindrome = true;
-                                break;
-                            }
-                            if ((i - currentLength + 1 + j) < 0)
-                            {
-                                break;
-                            }
-                            if (stack[length - 1 - j] != stack[i - currentLength + 1 + j])
-                            {
-                                break;
-                            }
-
-                        }
-                    }
-
-                    if (!isPalindrome && i - currentLength > 0)
-                    {
-                        for (int j = 0; j < currentLength; j++)
-                        {
-                            if (j == currentLength - 1)
-                            {
-                                isPalindrome = true;
-                                isDouble = true;
-                                break;
-                            }
-
-                            if ((i - currentLength + j) < 0)
-                            {
-                                break;
-                            }
-
-                            if (stack[length - 1 - j] != stack[i - currentLength + j])
-                            {
-                                break;
-                            }
-
-                        }
-                    }
-
-                    if (isPalindrome)
-                    {
-                        currentLength = currentLength * 2;
-                        if (!isDouble)
-                            currentLength = currentLength - 1;
-                    }
-
-
-                    if (isPalindrome && currentLength > result.Count)
-                    {
-                        result.Clear();
-                        for (int j = 0; j < currentLength; j++)
-                        {
-                            result.Add(stack[length - currentLength + j]);
-                        }
-                    }
-                }
-
-            return result.ToString();
         }
     }
 }
