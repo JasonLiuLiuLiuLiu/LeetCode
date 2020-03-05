@@ -8,7 +8,7 @@ namespace LeetCodeCSharp
     class N006
     {
         [TestCase("LEETCODEISHIRING", 4, ExpectedResult = "LDREOEIIECIHNTSG")]
-        [TestCase("",1,ExpectedResult = "")]
+        [TestCase("", 1, ExpectedResult = "")]
         [TestCase("AB", 1, ExpectedResult = "AB")]
         public string Convert(string s, int numRows)
         {
@@ -19,7 +19,7 @@ namespace LeetCodeCSharp
             List<char?>[] store = new List<char?>[numRows];
             for (var i = 0; i < store.Length; i++)
             {
-                store[i]=new List<char?>();
+                store[i] = new List<char?>();
             }
             var charArray = s.ToCharArray();
             int x = 0, y = 0;
@@ -35,7 +35,7 @@ namespace LeetCodeCSharp
                     if (y == numRows)
                     {
                         down = false;
-                        y-=2;
+                        y -= 2;
                         x++;
                     }
                 }
@@ -46,7 +46,7 @@ namespace LeetCodeCSharp
                     if (y < 0)
                     {
                         down = true;
-                        y+=2;
+                        y += 2;
                         x--;
                     }
                 }
